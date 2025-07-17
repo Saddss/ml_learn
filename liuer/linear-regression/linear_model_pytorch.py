@@ -15,7 +15,7 @@ class Model(nn.Module):
         return self.linear(x)
 
 model = Model()
-loss = nn.MSELoss(reduction='sum')
+loss = nn.MSELoss(reduction='mean')
 optimizer = torch.optim.SGD(model.parameters(), lr=0.01)
 
 w_list = []
