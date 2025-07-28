@@ -12,10 +12,15 @@ class Model(nn.Module):
         self.linear2 = torch.nn.Linear(6, 4)
         self.linear3 = torch.nn.Linear(4, 1)
         self.sigmoid = torch.nn.Sigmoid()
+        self.relu = torch.nn.ReLU()
 
     def forward(self, x):
-        x = self.sigmoid(self.linear1(x))
-        x = self.sigmoid(self.linear2(x))
+        # x = self.sigmoid(self.linear1(x))
+        # x = self.sigmoid(self.linear2(x))
+        # x = self.sigmoid(self.linear3(x))
+
+        x = self.relu(self.linear1(x))
+        x = self.relu(self.linear2(x))
         x = self.sigmoid(self.linear3(x))
         return x
 
@@ -67,7 +72,7 @@ model = Model()
 
 criterion = torch.nn.BCELoss(reduction='mean')
 optimizer = optim.Adam(model.parameters(), lr=0.1)  # 提高学习率
-epoch = 1000
+epoch = 500
 
 # 可调整的阈值
 threshold = 0.5
